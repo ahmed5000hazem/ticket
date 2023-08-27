@@ -13,9 +13,20 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
+            $table->string('firstname', 50);
+            $table->string('lastname', 50);
+            $table->string('email', 100)->unique();
+            $table->string('dial_code', 10);
+            $table->string('phone', 100)->unique();
+            $table->string('otp', 6)->nullable();
+            $table->date('dob')->comment('date of birth');
+            $table->enum('gender', ['male', 'female', 'other'])->default('other');
             $table->timestamp('email_verified_at')->nullable();
+            $table->timestamp('phone_verified_at')->nullable();
+            $table->foreignId('city_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('country_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->integer('passport_number')->nullable();
+            $table->date('passport_expiry_date')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
