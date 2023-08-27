@@ -11,12 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('verification', function (Blueprint $table) {
+        Schema::create('verifications', function (Blueprint $table) {
             $table->id();
-            $table->enum('type', ['phone', 'email']);
-            $table->string('verifiable');
+            $table->string('phone', 50)->nullable();
+            $table->string('email', 50)->nullable();
+            $table->string('dial_code', 15);
             $table->boolean('verified')->default(false);
-            $table->string('otp')->nullable();
+            $table->string('otp', 6)->nullable();
+            $table->foreignId('user_id')->nullable()->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->timestamp('verified_at')->nullable();
+            $table->string('token')->nullable();
+            $table->integer('attempts')->default(0);
             $table->timestamps();
         });
     }
@@ -26,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('verification');
+        Schema::dropIfExists('verifications');
     }
 };
