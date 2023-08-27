@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('email', 100)->unique();
             $table->string('dial_code', 10);
             $table->string('phone', 100)->unique();
-            $table->string('otp', 6)->nullable();
             $table->date('dob')->comment('date of birth');
             $table->enum('gender', ['male', 'female', 'other'])->default('other');
             $table->timestamp('email_verified_at')->nullable();
