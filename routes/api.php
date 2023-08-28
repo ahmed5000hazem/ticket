@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Api\auth\LoginController;
+use App\Http\Controllers\Api\auth\RegistrationController;
 use App\Http\Controllers\Api\Verification\VerificationController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -15,6 +17,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::post('/registre', [RegistrationController::class, 'registration']);
+Route::post('/login', [LoginController::class, 'login']);
 
 Route::prefix('verification')->group(function () {
     Route::post('send', [VerificationController::class, 'send']);
