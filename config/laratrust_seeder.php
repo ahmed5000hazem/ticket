@@ -14,18 +14,12 @@ return [
     'roles_structure' => [
         'superadministrator' => [
             'users' => 'c,r,u,d',
-            'payments' => 'c,r,u,d',
-            'profile' => 'r,u',
+            'events' => 'c,r,u,d',
+            'tickets' => 'c,r,u,d',
         ],
         'administrator' => [
-            'users' => 'c,r,u,d',
-            'profile' => 'r,u',
-        ],
-        'user' => [
-            'profile' => 'r,u',
-        ],
-        'role_name' => [
-            'module_1_name' => 'c,r,u,d',
+            'events' => 'c,r,u,d',
+            'tickets' => 'c,r,u,d',
         ],
     ],
 
