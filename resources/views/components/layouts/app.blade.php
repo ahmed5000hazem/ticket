@@ -20,8 +20,12 @@
     </head>
 
     <body class="antialiased">
-        {{ $slot }}
+        <div class="container mx-32 m-auto">
+            <x-dashboard.navbar></x-dashboard.navbar>
+            {{ $slot }}
+        </div>
 
+        @livewire('notifications')
         @filamentScripts
         @vite('resources/js/app.js')
     </body>
