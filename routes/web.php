@@ -14,8 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('guest')->as('dashboard.')->group(function () {
-    Route::get('login', [AuthController::class, 'loginPage'])->name('login');
+Route::middleware('guest')->group(function () {
+    Route::get('login', [AuthController::class, 'loginPage'])->name('loginPage');
     Route::post('login', [AuthController::class, 'login'])->name('login');
 });
 
