@@ -17,6 +17,6 @@ class AuthController extends Controller
     public function login(LoginRequest $request)
     {
         return (Auth::guard('dashboard')->attempt($request->only('email', 'password')))? 
-            redirect()->route('dashboard'): redirect()->back();
+            redirect('/'): redirect()->back();
     }
 }
